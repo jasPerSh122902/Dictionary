@@ -3,11 +3,10 @@
 
 int main()
 {
-    
     Dictionary<int,int> m_dictionary;
-    m_dictionary.addItem(1, 1);
-    m_dictionary.addItem(2, 2);
-    m_dictionary.addItem(3, 3);
-    m_dictionary.addItem(4, 4);
+    m_dictionary.addItem(1, 3);
+    m_dictionary.addItem(2, 563);
+    m_dictionary.addItem(3, 123);
+    m_dictionary.addItem(4, 400);
 }
 
