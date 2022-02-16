@@ -218,8 +218,6 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key, TValue& value)
 			return true;
 		}
 		else return false;
-		
-		
 	}
 }
 
@@ -232,7 +230,8 @@ inline int Dictionary<TKey, TValue>::getCount() const
 template<typename TKey, typename TValue>
 inline const Dictionary<TKey, TValue>& Dictionary<TKey, TValue>::operator=(const Dictionary<TKey, TValue> other) const
 {
-	return other;
+	m_items->itemKey = other.m_items->itemKey;
+	m_items->itemValue = other.m_items->itemValue;
 }
 
 template<typename TKey, typename TValue>
