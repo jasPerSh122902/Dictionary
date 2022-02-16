@@ -64,6 +64,7 @@ inline bool Dictionary<TKey, TValue>::containsKey(const TKey key) const
 	//checks if the itms key is the object
 	for (int i = 0; i < getCount(); i++) 
 	{
+		//compares the items key to the taken in key
 		if (m_items[i].itemKey == key)
 		{
 			//makes the items print
@@ -80,7 +81,7 @@ inline bool Dictionary<TKey, TValue>::containsValue(const TValue value) const
 	//iterate through the arry 
 	for (int i = 0; i < getCount(); i++) 
 	{
-		//check if the value of item is equal to object
+		//compared the items value to the value that is taken in
 		if (m_items[i].itemValue == value) 
 		{
 			//makes the items print
@@ -98,9 +99,10 @@ inline bool Dictionary<TKey, TValue>::tryGetValue(const TKey key, TValue& value)
 	//iterates through the array of items.
 	for (int i = 0; i < getCount(); i++) 
 	{
-		//compares the key and the values
+		//compares the key and key that is taken in
 		if (m_items[i].itemKey == key )
 		{
+			//makds the vlaue equal to the item at teh index of i's value
 			value = m_items[i].itemValue;
 			//makes the items print
 			//std::cout << "| Value : " << value << " "<<"Key : "<< key;
@@ -186,11 +188,12 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key)
 			delete[] m_items;
 			//copy all of the values form the new array to the old array
 			m_items = newArrayItem;
+			//subtracts 1 from count
 			m_count--;
 		}
-		else delete newArrayItem;
+		else delete newArrayItem;//just remove the new array
 
-		return itemRemoved;
+		return itemRemoved;//return the value that is removed
 		
 	}
 	
@@ -199,15 +202,16 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key)
 template<typename TKey, typename TValue>
 inline bool Dictionary<TKey, TValue>::remove(const TKey key, TValue& value)
 {
-	//Make a temp item
+	//Make TValue as a holder for value
 	TValue valueRemoved;
 	//chekc if it was a key and value
-	if (containsKey(key) && containsValue(value)) 
+	if (containsKey(key) && containsValue(value))
 	{
+		//check to try and get the key, value is all ready made
 		if (tryGetValue(key, valueRemoved))
 		{
-			remove(key);
-			//set the temp items key and value
+			remove(key);//removes the key
+			//set the value to the value removed
 			value = valueRemoved;
 			//prints the item to the console
 			//std::cout << "| The items vlaue that is removed: " << value << std::endl;
