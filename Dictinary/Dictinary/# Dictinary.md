@@ -1,11 +1,18 @@
 # Dictinary
+# **Introduction**
+
+* Successful creation of a project which implements and demonstrates a Dictinary
+
+    * The created program must demonstrate the Dictinarys data storage
+    * Project submitted as an executable binary file that can be run external to an IDE.
+* Source code and project files also submitted for review
 
 $File$ : _DictionaryT.h_ 
 
 $Type$ : Tempate T
 
 The dictinary is a class that takes in a key and gives a value. This can be compared to a dictinary for works were you search for a word and get its definition.
-
+# **Desgin**
 
 $Name$ : Dictionary<TKey, TValue>()
 + Description : A basic constructor for the dictionary class.
