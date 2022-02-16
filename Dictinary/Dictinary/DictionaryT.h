@@ -125,15 +125,19 @@ inline void Dictionary<TKey, TValue>::addItem(const TKey& key, const TValue& val
 	}
 	//delete old array
 	delete[] m_items;
-	//add the value to the new array
+	
+	//addes the value one the index of the ocunt
 	newArrayItem[m_count].itemValue = value;
 	newArrayItem[m_count].itemKey = key;
+
+	//add the value to the new array
+	newArrayItem->itemValue = newArrayItem[m_count].itemValue;
+	newArrayItem->itemKey = newArrayItem[m_count].itemKey;
 	
-	//increase count
-	m_count++;
 	//then make m_ites equal to the new array
 	m_items = newArrayItem;
-	
+	//increase count
+	m_count++;
 	//makes the items print
 	std::cout << " " << m_items->itemValue;
 }
@@ -199,8 +203,7 @@ inline int Dictionary<TKey, TValue>::getCount() const
 template<typename TKey, typename TValue>
 inline const Dictionary<TKey, TValue>& Dictionary<TKey, TValue>::operator=(const Dictionary<TKey, TValue> other) const
 {
-	
-	*m_items = *other.m_items;
+	return other;
 }
 
 template<typename TKey, typename TValue>
