@@ -34,5 +34,6 @@ int main()
 	//--------------------------------
 	//m_dictionary.remove(4);//removes with only a key
 	//--------------------------------
+	 system("pause");
 }
 
