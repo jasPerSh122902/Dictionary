@@ -1,4 +1,4 @@
 ﻿  Dictinary.cpp
-C:\Users\s218005\Documents\GitHub\Dictionary\Dictinary\Dictinary\DictionaryT.h(220): warning C4715: 'Dictionary<int,int>::remove': not all control paths return a value
-C:\Users\s218005\Documents\GitHub\Dictionary\Dictinary\Dictinary\DictionaryT.h(197): warning C4715: 'Dictionary<int,int>::remove': not all control paths return a value
+C:\Users\s218005\Documents\GitHub\Dictionary\Dictinary\Dictinary\DictionaryT.h(210): warning C4715: 'Dictionary<int,int>::remove': not all control paths return a value
+C:\Users\s218005\Documents\GitHub\Dictionary\Dictinary\Dictinary\DictionaryT.h(188): warning C4715: 'Dictionary<int,int>::remove': not all control paths return a value
   Dictinary.vcxproj -> C:\Users\s218005\Documents\GitHub\Dictionary\Dictinary\Debug\Dictinary.exe
