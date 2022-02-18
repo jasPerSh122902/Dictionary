@@ -16,24 +16,28 @@ int main()
 	m_dictionary.addItem(4, 400);
 	//----------------------------
 	//searches for the value returns a bool
-	std::cout << "search for the value" << std::endl;
+	std::cout << "Search for the value" << std::endl;
 	m_dictionary.containsValue(123);
+	std::cout << " " << std::endl;
 	//searches for the key and returns a bool
-	std::cout << "tryies to get the key 4" << std::endl;
+	std::cout << "Tryies to get the key 4" << std::endl;
 	m_dictionary.containsKey(4);
+	std::cout << " " << std::endl;
 	//tries to get the value with a key and a int
-	std::cout << "search for the key 2" << std::endl;
+	std::cout << "Search for the key 2" << std::endl;
 	m_dictionary.tryGetValue(2, m_x);
 	//--------------------------------
 	std::cout << " " << std::endl;
-	std::cout << "removed key 2 and spits out that key" << std::endl;
-	 m_dictionary.remove(2, m_x);//The remove function takes in a Key and a value
-	 std::cout << "serches for 2 that is removed, this should show up blank" << std::endl;
-	 m_dictionary.tryGetValue(2, m_x);
-	 
+	std::cout << "Removed key 2 and spits out that key" << std::endl;
+	m_dictionary.remove(2, m_x);//The remove function takes in a Key and a value
+	std::cout << " " << std::endl;
+	std::cout << "Serches for 2's value that is removed, this should show up blank" << std::endl;
+	m_dictionary.tryGetValue(2, m_x);
+	std::cout << " " << std::endl;
+	std::cout << "This is blank becuase 2 is a key for value 563 and so the value is deleted and so it dos not show up" << std::endl;
 	//--------------------------------
 	//m_dictionary.remove(4);//removes with only a key
 	//--------------------------------
-	 system("pause");
+	system("pause");
 }
 
