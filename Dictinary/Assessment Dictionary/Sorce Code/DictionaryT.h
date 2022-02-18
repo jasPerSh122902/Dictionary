@@ -68,7 +68,7 @@ inline bool Dictionary<TKey, TValue>::containsKey(const TKey key) const
 		if (m_items[i].itemKey == key)
 		{
 			//makes the items print
-			//std::cout << "| Key: " << key << std::endl;
+			std::cout << "| Key: " << key << std::endl;
 			return true;//return true
 		}
 	}
@@ -85,7 +85,7 @@ inline bool Dictionary<TKey, TValue>::containsValue(const TValue value) const
 		if (m_items[i].itemValue == value) 
 		{
 			//makes the items print
-			//std::cout << "| Value: " << value << std::endl;
+			std::cout << "| Value: " << value << std::endl;
 			return true;//return true
 		}
 			
@@ -105,23 +105,11 @@ inline bool Dictionary<TKey, TValue>::tryGetValue(const TKey key, TValue& value)
 			//makds the vlaue equal to the item at teh index of i's value
 			value = m_items[i].itemValue;
 			//makes the items print
-			//std::cout << "| Value : " << value << " "<<"Key : "<< key;
+			std::cout << "| Value : " << value << " "<<"Key : "<< key;
 			return true;//return true
 		}
 	}
 	return false;
-	////iterates through the array of items.
-	//for (int i = 0; i < getCount(); i++)
-	//{//iterates through the array of items.
-	//	for (int j = 0; j < getCount(); j++)
-	//	{
-	//		//compares the key and the values
-	//		if (m_items[i].itemKey == key && m_items[j].itemValue == value)
-	//			return true; // returns true
-	//	}
-	//	return false;
-	//}
-	//return false;
 }
 
 template<typename TKey, typename TValue>
@@ -214,7 +202,7 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key, TValue& value)
 			//set the value to the value removed
 			value = valueRemoved;
 			//prints the item to the console
-			//std::cout << "| The items vlaue that is removed: " << value << std::endl;
+			std::cout << "| The items vlaue that is removed: " << value << std::endl;
 			return true;
 		}
 		else return false;
