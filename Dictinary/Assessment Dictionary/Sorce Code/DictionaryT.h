@@ -3,15 +3,15 @@
 template<typename TKey, typename TValue>
 class Dictionary
 {
-	
+
 public:
 	Dictionary<TKey, TValue>();
-	Dictionary<TKey,TValue>(Dictionary<TKey,TValue>& other );
+	Dictionary<TKey, TValue>(Dictionary<TKey, TValue>& other);
 	~Dictionary<TKey, TValue>();
 	void clear();//deletes all items in dictionary
 	bool containsKey(const TKey key) const;//checks to see if an item that has the given key is in the dictionary
 	bool containsValue(const TValue value) const;//checks to see if an item that has the given value is in the dictionary
-	bool tryGetValue(const TKey key,  TValue& value) const;//tries to find the item that matches the given key
+	bool tryGetValue(const TKey key, TValue& value) const;//tries to find the item that matches the given key
 	void addItem(const TKey& key, const TValue& value);//creates a new item with the given key and value and adds it to the dictionary
 	bool remove(const TKey key);//removes the item that has the given key
 	bool remove(const TKey key, TValue& value);//removes the item that has the given key and gives back the value of the item that was removed
@@ -55,14 +55,14 @@ inline Dictionary<TKey, TValue>::~Dictionary()
 template<typename TKey, typename TValue>
 inline void Dictionary<TKey, TValue>::clear()
 {
-	 delete[] m_items;
+	delete[] m_items;
 }
 
 template<typename TKey, typename TValue>
 inline bool Dictionary<TKey, TValue>::containsKey(const TKey key) const
 {
 	//checks if the itms key is the object
-	for (int i = 0; i < getCount(); i++) 
+	for (int i = 0; i < getCount(); i++)
 	{
 		//compares the items key to the taken in key
 		if (m_items[i].itemKey == key)
@@ -79,16 +79,16 @@ template<typename TKey, typename TValue>
 inline bool Dictionary<TKey, TValue>::containsValue(const TValue value) const
 {
 	//iterate through the arry 
-	for (int i = 0; i < getCount(); i++) 
+	for (int i = 0; i < getCount(); i++)
 	{
 		//compared the items value to the value that is taken in
-		if (m_items[i].itemValue == value) 
+		if (m_items[i].itemValue == value)
 		{
 			//makes the items print
 			std::cout << "| Value: " << value << std::endl;
 			return true;//return true
 		}
-			
+
 	}
 	return false;
 }
@@ -97,15 +97,15 @@ template<typename TKey, typename TValue>
 inline bool Dictionary<TKey, TValue>::tryGetValue(const TKey key, TValue& value) const
 {
 	//iterates through the array of items.
-	for (int i = 0; i < getCount(); i++) 
+	for (int i = 0; i < getCount(); i++)
 	{
 		//compares the key and key that is taken in
-		if (m_items[i].itemKey == key )
+		if (m_items[i].itemKey == key)
 		{
 			//makds the vlaue equal to the item at teh index of i's value
 			value = m_items[i].itemValue;
 			//makes the items print
-			std::cout << "| Value : " << value << " "<<"Key : "<< key;
+			std::cout << "| Value : " << value << " " << "Key : " << key << std::endl;
 			return true;//return true
 		}
 	}
@@ -133,7 +133,7 @@ inline void Dictionary<TKey, TValue>::addItem(const TKey& key, const TValue& val
 
 	//delete old array
 	delete[] m_items;
-	
+
 	//then make m_ites equal to the new array
 	m_items = newArrayItem;
 	//increase count
@@ -149,13 +149,13 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key)
 	Item* newArrayItem = new Item[m_count - 1];
 	bool itemRemoved = false;
 	//check if the key exists
-	if (containsKey(key)) 
+	if (containsKey(key))
 	{
 		int j = 0;
 		//iterate through the array of items...
 		for (int i = 0; i < getCount(); i++)
 		{
-			if (m_items[i].itemKey != key) 
+			if (m_items[i].itemKey != key)
 			{
 				//iterate with i and makes j increase to copy values
 				newArrayItem[j].itemKey = m_items[i].itemKey;//copy key
@@ -182,9 +182,9 @@ inline bool Dictionary<TKey, TValue>::remove(const TKey key)
 		else delete newArrayItem;//just remove the new array
 
 		return itemRemoved;//return the value that is removed
-		
+
 	}
-	
+
 }
 
 template<typename TKey, typename TValue>
