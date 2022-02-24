@@ -17,7 +17,7 @@ public:
 	bool remove(const TKey key, TValue& value);//removes the item that has the given key and gives back the value of the item that was removed
 	int  getCount() const;//gets the number of items in the dictionary
 
-	const Dictionary<TKey, TValue>& operator=(const Dictionary<TKey, TValue> other)const;
+	const Dictionary<TKey, TValue>& operator=(const Dictionary<TKey, TValue>& other)const;
 	TValue operator[](const TKey key);
 private:
 
@@ -41,21 +41,21 @@ inline Dictionary<TKey, TValue>::Dictionary()
 template<typename TKey, typename TValue>
 inline Dictionary<TKey, TValue>::Dictionary(Dictionary<TKey, TValue>& other)
 {
-	m_count = other.m_count;
-	m_items = other.m_items;
+	*this = other;
 }
 
 template<typename TKey, typename TValue>
 inline Dictionary<TKey, TValue>::~Dictionary()
 {
-	m_items = nullptr;
-	m_count = 0;
+	clear();
 }
 
 template<typename TKey, typename TValue>
 inline void Dictionary<TKey, TValue>::clear()
 {
 	delete[] m_items;
+	m_items = nullptr;
+	m_count = 0;
 }
 
 template<typename TKey, typename TValue>
@@ -118,13 +118,11 @@ inline void Dictionary<TKey, TValue>::addItem(const TKey& key, const TValue& val
 	//Make new item array that is 1 more
 	Item* newArrayItem = new Item[m_count + 1];
 	//for loop to copy the values in the old to the new
-	int j = 0;
 	for (int i = 0; i < getCount(); i++)
 	{
 		//set the new array at teh index of i to the m_items at the index of i
-		newArrayItem[j].itemKey = m_items[i].itemKey;
-		newArrayItem[j].itemValue = m_items[i].itemValue;
-		j++;
+		newArrayItem[i].itemKey = m_items[i].itemKey;
+		newArrayItem[i].itemValue = m_items[i].itemValue;
 	}
 
 	//addes the value one the index of the ocunt
@@ -216,14 +214,28 @@ inline int Dictionary<TKey, TValue>::getCount() const
 }
 
 template<typename TKey, typename TValue>
-inline const Dictionary<TKey, TValue>& Dictionary<TKey, TValue>::operator=(const Dictionary<TKey, TValue> other) const
+inline const Dictionary<TKey, TValue>& Dictionary<TKey, TValue>::operator=(const Dictionary<TKey, TValue>& other) const
 {
-	m_items->itemKey = other.m_items->itemKey;
-	m_items->itemValue = other.m_items->itemValue;
+	//clears the list
+	clear();
+
+	m_items = new Item[other.getCount()]();
+	for (int i = 0; i < other.getCount(); i++)
+	{
+		//make items at the index of i = ot the other items at the index of i
+		m_items[i] = other.m_items[i];
+	}
+	
+	m_count = other.getCount();
+	//returns the count as a pointer
+	return *this;
 }
 
 template<typename TKey, typename TValue>
 inline TValue Dictionary<TKey, TValue>::operator[](const TKey key)
 {
+	TValue value = TValue();
+	//has a atempt to get a key and chang the vlaue to the key's value
+	tryGetValue(key, value);
 	return TValue(key);
 }
